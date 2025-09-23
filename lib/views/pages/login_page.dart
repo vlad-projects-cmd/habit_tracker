@@ -51,9 +51,10 @@ class _LoginPageState extends State<LoginPage> {
     if (!isValid) return;
 
     // Here you would typically handle the login logic
-    Navigator.pushReplacement(
+    Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (context) => const WidgetTree()),
+      (route) => false,
     );
   }
 
