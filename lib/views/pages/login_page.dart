@@ -3,7 +3,9 @@ import 'package:reminder_app/views/widget_tree.dart';
 import 'package:reminder_app/views/widgets/hero_widget.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key, required this.title});
+
+  final String title;
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -84,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            const HeroWidget(title: 'Login'),
+                            HeroWidget(title: widget.title),
                             const Text(
                               'Welcome back',
                               style: TextStyle(

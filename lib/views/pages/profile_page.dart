@@ -10,26 +10,30 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(20.0),
-      child: Column(
-        children: [
-          const SizedBox(height: 16),
-          ListTile(
-            title: Text('Log Out!'),
-            onTap: () {
-              selectedPageNotifier.value = 0;
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return WelcomePage();
-                  },
-                ),
-              );
-            },
+      child: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 16),
+              ListTile(
+                title: Text('Log Out!'),
+                onTap: () {
+                  selectedPageNotifier.value = 0;
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return WelcomePage();
+                      },
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: 16),
+              HeroWidget(title: 'Profile'),
+            ],
           ),
-          const SizedBox(height: 16),
-          HeroWidget(title: 'Profile'),
-        ],
+        ),
       ),
     );
   }
