@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:reminder_app/data/constants.dart';
 import 'package:reminder_app/data/notifiers.dart';
 import 'package:reminder_app/views/pages/welcome_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const HabitBuilder());
@@ -42,6 +44,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void initThemeMode() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final bool? repeat = prefs.getBool(KConstants.isDarkModeKey);
+
+    isDarkModeNotifier.value = repeat ?? false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: WelcomePage());

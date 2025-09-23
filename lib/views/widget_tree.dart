@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reminder_app/data/constants.dart';
 import 'package:reminder_app/data/notifiers.dart';
 import 'package:reminder_app/views/pages/history_page.dart';
 import 'package:reminder_app/views/pages/home_page.dart';
@@ -7,6 +8,7 @@ import 'package:reminder_app/views/pages/progress_page.dart';
 import 'package:reminder_app/views/pages/settings_page.dart';
 import 'package:reminder_app/views/pages/test_page.dart';
 import 'package:reminder_app/views/widgets/navbar_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 List<Widget> pages = [HomePage(), HistoryPage(), ProfilePage(), TestPage()];
 
@@ -47,8 +49,14 @@ class WidgetTree extends StatelessWidget {
             icon: Icon(Icons.settings),
           ),
           IconButton(
-            onPressed: () {
+            onPressed: () async {
               isDarkModeNotifier.value = !isDarkModeNotifier.value;
+              final SharedPreferences prefs =
+                  await SharedPreferences.getInstance();
+              await prefs.setBool(
+                KConstants.isDarkModeKey,
+                isDarkModeNotifier.value,
+              );
             },
             icon: ValueListenableBuilder(
               valueListenable: isDarkModeNotifier,
