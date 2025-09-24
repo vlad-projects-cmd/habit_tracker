@@ -3,7 +3,9 @@ import 'package:reminder_app/views/widget_tree.dart';
 import 'package:reminder_app/views/widgets/hero_widget.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+  const RegisterPage({super.key, required this.title});
+
+  final String title;
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -144,7 +146,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            HeroWidget(title: 'Login'),
+                            HeroWidget(title: widget.title),
                             const Text(
                               'Create your account',
                               style: TextStyle(
