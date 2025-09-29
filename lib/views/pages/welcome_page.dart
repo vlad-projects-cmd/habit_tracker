@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reminder_app/views/pages/login_page.dart';
-import 'package:reminder_app/views/pages/register_page.dart';
+import 'package:reminder_app/views/pages/onboarding_page.dart';
 import 'package:reminder_app/views/widgets/hero_widget.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -40,7 +40,7 @@ class WelcomePage extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return RegisterPage(title: 'Register');
+                            return OnboardingPage();
                           },
                         ),
                       );
